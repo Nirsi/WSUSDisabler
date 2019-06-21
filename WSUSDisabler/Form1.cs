@@ -23,22 +23,14 @@ namespace WSUSDisabler
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            try
+            if (_registryEditor.IsWsusUp())
             {
-                if (_registryEditor.IsWsusUp())
-                {
-                    LoadWsusStatus();
-                }
-                else
-                {
-                    labelWsusStatus.Text = "Your system doesn't use WSUS or policies are misconfigured";
-                    BtChangeWsus.Enabled = false;
-                }
+                LoadWsusStatus();
             }
-            catch (Exception exception)
+            else
             {
-                MessageBox.Show(exception.ToString());
-                throw;
+                labelWsusStatus.Text = "Your system doesn't use WSUS or policies are misconfigured";
+                BtChangeWsus.Enabled = false;
             }
         }
 
