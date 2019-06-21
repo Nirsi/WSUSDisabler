@@ -58,13 +58,15 @@ namespace WSUSDisabler
         {
             if (_wsusOn)
             {
-                _registryEditor.DisableWsus();
+                // 0 = disable
+                _registryEditor.SwitchWsus(0);
                 
                 _wsusOn = false;
             }
             else
             {
-                _registryEditor.EnableWsus();
+                // 1 = enable
+                _registryEditor.SwitchWsus(1);
 
                 _wsusOn = true;
             }

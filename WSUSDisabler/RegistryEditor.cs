@@ -16,14 +16,7 @@ namespace WSUSDisabler
 
         public bool IsWsusUp()
         {
-            if (_registryKey != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return _registryKey != null;
         }
 
         public int GetKeyValue()
@@ -31,6 +24,8 @@ namespace WSUSDisabler
             return Convert.ToInt32(_registryKey.GetValue("UseWUServer"));
         }
 
+        /*    potentially deprecated
+         
         public void EnableWsus()
         {
             _registryKey.SetValue("UseWUServer", "1", RegistryValueKind.DWord);
@@ -39,6 +34,13 @@ namespace WSUSDisabler
         public void DisableWsus()
         {
             _registryKey.SetValue("UseWUServer", "0", RegistryValueKind.DWord);
+        }
+        
+        */
+
+        public void SwitchWsus(int value)
+        {
+            _registryKey.SetValue("UseWUServer", value.ToString(), RegistryValueKind.DWord);
         }
     }
 }
