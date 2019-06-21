@@ -50,6 +50,7 @@ namespace WSUSDisabler
         {
             _wsusOn = _registryEditor.GetKeyValue() == 1;
             labelWsusStatus.Text = _wsusOn ? "Your system use WSUS" : "WSUS disabled as source of updates";
+            BtChangeWsus.Text = _wsusOn ? "Disable WSUS" : "Enable WSUS";
             
         }
 
