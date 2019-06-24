@@ -5,14 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WSUSDisabler")]
+[assembly: AssemblyTitle("Simple application to disable WSUS as source of updates for computer")]
 [assembly: AssemblyDescription("Simple application to disable WSUS as source of updates for computer")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("silen.org")]
-[assembly: AssemblyProduct("WSUSDisabler")]
-[assembly: AssemblyCopyright("Jan Novák | GPLv3")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+[assembly: AssemblyProduct("WSUS Disabler")]
+[assembly: AssemblyCopyright("Jan Novák | silen.org")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
