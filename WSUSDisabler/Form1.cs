@@ -15,6 +15,7 @@ namespace WSUSDisabler
     public partial class Form1 : Form
     {
         private readonly RegistryEditor _registryEditor = new RegistryEditor();
+        private readonly ServiceManager _serviceManager = new ServiceManager("wuauserv");
 
         public Form1()
         {
@@ -22,9 +23,10 @@ namespace WSUSDisabler
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        {   
             if (_registryEditor.IsWsusUp())
             {
+                _registryEditor.MakeBackup();
                 LoadWsusStatus();
             }
             else
@@ -33,6 +35,12 @@ namespace WSUSDisabler
                 BtChangeWsus.Enabled = false;
             }
         }
+        
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _registryEditor.RestoreWorkKey();
+            _registryEditor.BackupCleanUp();
+        }
 
 
         //privates
@@ -40,7 +48,7 @@ namespace WSUSDisabler
         
         private void LoadWsusStatus()
         {
-            _wsusOn = _registryEditor.GetKeyValue() == 1;
+            _wsusOn = _registryEditor.WsusCheckState();
             labelWsusStatus.Text = _wsusOn ? "Your system use WSUS" : "WSUS disabled as source of updates";
             BtChangeWsus.Text = _wsusOn ? "Disable WSUS" : "Enable WSUS";
             
@@ -50,21 +58,32 @@ namespace WSUSDisabler
         {
             if (_wsusOn)
             {
-                // 0 = disable
-                _registryEditor.SwitchWsus(0);
+                //disabling wsus...
+                
+                _serviceManager.StopService();
+                _registryEditor.RemoveWorkKey();
+                _serviceManager.StartService();
                 
                 _wsusOn = false;
             }
             else
             {
-                // 1 = enable
-                _registryEditor.SwitchWsus(1);
-
+                //enabling wsus
+                
+                _serviceManager.StopService();
+                _registryEditor.RestoreWorkKey();
+                _serviceManager.StartService();
+                
                 _wsusOn = true;
             }
 
             labelWsusStatus.Text = _wsusOn ? "Your system use WSUS" : "WSUS disabled as source of updates";
             BtChangeWsus.Text = _wsusOn ? "Disable WSUS" : "Enable WSUS";
+        }
+
+        private void tmCheckService_Tick(object sender, EventArgs e)
+        {
+            labelServiceStatus.Text = _serviceManager.CheckStatus();
         }
     }
 }

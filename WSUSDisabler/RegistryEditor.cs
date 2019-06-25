@@ -11,13 +11,12 @@ namespace WSUSDisabler
         private RegistryKey _backupKey;
         private RegistryKey _workKey;
 
-        private const string MasterKey = @"SOFTWARE\MyTest";
-        private const string WorkKey = @"Unit";
+        private const string MasterKey = @"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate";
+        private const string WorkKey = @"AU";
         private const string BackupName = @"BackUp";
 
         public RegistryEditor()
         {
-            //_registryKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate", true);
             _registryKey = Registry.CurrentUser.OpenSubKey(MasterKey, true);
 
         }
