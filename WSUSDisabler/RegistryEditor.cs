@@ -26,34 +26,6 @@ namespace WSUSDisabler
             return _registryKey != null;
         }
         
-        public int GetKeyValue()
-        {
-            return Convert.ToInt32(_registryKey.GetValue("UseWUServer"));
-        }
-
-        /*    potentially deprecated
-         
-        public void EnableWsus()
-        {
-            _registryKey.SetValue("UseWUServer", "1", RegistryValueKind.DWord);
-        }
-
-        public void DisableWsus()
-        {
-            _registryKey.SetValue("UseWUServer", "0", RegistryValueKind.DWord);
-        }
-        
-        
-
-        public void SwitchWsus(int value)
-        {
-            _registryKey.SetValue("UseWUServer", value.ToString(), RegistryValueKind.DWord);
-
-            _registryKey.Flush();
-        }
-        
-        */
-
         public void BackupCleanUp()
         {
             if (_backupKey != null)
@@ -65,13 +37,12 @@ namespace WSUSDisabler
 
         public void MakeBackup()
         {
-
-            //TODO: Need refactoring!
+            
             _registryKey.CreateSubKey(BackupName);
             _backupKey = _registryKey.OpenSubKey(BackupName, true);
             _workKey = _registryKey.OpenSubKey(WorkKey, true);
 
-            foreach (var valueName in  _registryKey.OpenSubKey(WorkKey).GetValueNames())
+            foreach (var valueName in  _workKey.GetValueNames())
             {
                 var value = _workKey.GetValue(valueName);
                 var valueKind = _workKey.GetValueKind(valueName);
@@ -88,7 +59,7 @@ namespace WSUSDisabler
         {
             _registryKey.CreateSubKey(WorkKey);
             var _workKey = _registryKey.OpenSubKey(WorkKey, true);
-            foreach (var valueName in _registryKey.OpenSubKey(BackupName).GetValueNames())
+            foreach (var valueName in _backupKey.GetValueNames())
             {
                 var value = _backupKey.GetValue(valueName);
                 var valueKind = _backupKey.GetValueKind(valueName);

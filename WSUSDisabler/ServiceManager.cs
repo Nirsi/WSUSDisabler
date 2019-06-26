@@ -7,19 +7,18 @@ namespace WSUSDisabler
     public class ServiceManager
     {
         private ServiceController _serviceController;
-        private string ServiceName;
+        private readonly string _serviceName;
 
         public ServiceManager(string serviceName)
         {
             _serviceController = new ServiceController();
-            this.ServiceName = serviceName;
-            _serviceController.ServiceName = ServiceName;
+            this._serviceName = serviceName;
+            _serviceController.ServiceName = _serviceName;
         }
 
         public string CheckStatus()
         {
-            _serviceController = new ServiceController();
-            _serviceController.ServiceName = ServiceName;
+            _serviceController = new ServiceController {ServiceName = _serviceName};
             return _serviceController.Status.ToString();
         }
 

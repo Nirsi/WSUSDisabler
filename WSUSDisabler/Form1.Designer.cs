@@ -40,10 +40,10 @@
             // 
             this.labelWsusStatus.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular,
                 System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.labelWsusStatus.Location = new System.Drawing.Point(13, 23);
+            this.labelWsusStatus.Location = new System.Drawing.Point(13, 9);
             this.labelWsusStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelWsusStatus.Name = "labelWsusStatus";
-            this.labelWsusStatus.Size = new System.Drawing.Size(326, 44);
+            this.labelWsusStatus.Size = new System.Drawing.Size(326, 58);
             this.labelWsusStatus.TabIndex = 0;
             this.labelWsusStatus.Text = "WSUS ";
             this.labelWsusStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -87,7 +87,7 @@
             this.Controls.Add(this.labelWsusStatus);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form1";
-            this.Text = "WSUSDisabler";
+            this.Text = "WSUS Disabler";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
