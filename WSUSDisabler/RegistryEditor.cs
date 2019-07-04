@@ -57,6 +57,8 @@ namespace WSUSDisabler
 
         public void RestoreWorkKey()
         {
+            if (_registryKey == null) return;
+
             _registryKey.CreateSubKey(WorkKey);
             var _workKey = _registryKey.OpenSubKey(WorkKey, true);
             foreach (var valueName in _backupKey.GetValueNames())
