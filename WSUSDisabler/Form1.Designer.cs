@@ -30,6 +30,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.labelWsusStatus = new System.Windows.Forms.Label();
             this.BtChangeWsus = new System.Windows.Forms.Button();
             this.labelServiceStatus = new System.Windows.Forms.Label();
@@ -38,12 +39,10 @@
             // 
             // labelWsusStatus
             // 
-            this.labelWsusStatus.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.labelWsusStatus.Location = new System.Drawing.Point(13, 9);
-            this.labelWsusStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelWsusStatus.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWsusStatus.Location = new System.Drawing.Point(11, 8);
             this.labelWsusStatus.Name = "labelWsusStatus";
-            this.labelWsusStatus.Size = new System.Drawing.Size(326, 58);
+            this.labelWsusStatus.Size = new System.Drawing.Size(279, 50);
             this.labelWsusStatus.TabIndex = 0;
             this.labelWsusStatus.Text = "WSUS ";
             this.labelWsusStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -51,10 +50,9 @@
             // BtChangeWsus
             // 
             this.BtChangeWsus.Font = new System.Drawing.Font("Consolas", 11.25F);
-            this.BtChangeWsus.Location = new System.Drawing.Point(82, 129);
-            this.BtChangeWsus.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.BtChangeWsus.Location = new System.Drawing.Point(70, 112);
             this.BtChangeWsus.Name = "BtChangeWsus";
-            this.BtChangeWsus.Size = new System.Drawing.Size(182, 39);
+            this.BtChangeWsus.Size = new System.Drawing.Size(156, 34);
             this.BtChangeWsus.TabIndex = 1;
             this.BtChangeWsus.Text = "Unable to change";
             this.BtChangeWsus.UseVisualStyleBackColor = true;
@@ -63,10 +61,9 @@
             // labelServiceStatus
             // 
             this.labelServiceStatus.Font = new System.Drawing.Font("Consolas", 11.25F);
-            this.labelServiceStatus.Location = new System.Drawing.Point(13, 82);
-            this.labelServiceStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelServiceStatus.Location = new System.Drawing.Point(11, 71);
             this.labelServiceStatus.Name = "labelServiceStatus";
-            this.labelServiceStatus.Size = new System.Drawing.Size(326, 22);
+            this.labelServiceStatus.Size = new System.Drawing.Size(279, 19);
             this.labelServiceStatus.TabIndex = 2;
             this.labelServiceStatus.Text = "Service";
             this.labelServiceStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -79,18 +76,19 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 180);
+            this.ClientSize = new System.Drawing.Size(302, 156);
             this.Controls.Add(this.labelServiceStatus);
             this.Controls.Add(this.BtChangeWsus);
             this.Controls.Add(this.labelWsusStatus);
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "WSUS Disabler";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+
         }
 
         #endregion

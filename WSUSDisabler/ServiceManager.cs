@@ -5,7 +5,7 @@ using System.Windows.Forms;
 namespace WSUSDisabler
 {
     public class ServiceManager
-    {
+    { 
         private ServiceController _serviceController;
         private readonly string _serviceName;
 
