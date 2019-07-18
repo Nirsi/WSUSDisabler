@@ -17,7 +17,7 @@ namespace WSUSDisabler
 
         public RegistryEditor()
         {
-            _registryKey = Registry.CurrentUser.OpenSubKey(MasterKey, true);
+            _registryKey = Registry.LocalMachine.OpenSubKey(MasterKey, true);
 
         }
 
